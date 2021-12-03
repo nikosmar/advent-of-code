@@ -22,7 +22,7 @@ fn main() {
     let mut gamma: u32 = 0;
 
     for i in 0..BITS {
-        if 2 * appearances[BITS - 1 - i] > line_counter {
+        if appearances[BITS - 1 - i] > line_counter - appearances[BITS - 1 - i] {
             gamma |= 1 << i;
         }
     }
