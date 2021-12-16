@@ -1,2 +1,4 @@
 *.txt
 */out
+*_poc.py
+.vscode
