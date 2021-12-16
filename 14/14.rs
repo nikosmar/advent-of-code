@@ -2,11 +2,10 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-
 fn element_difference(element_appearances: &HashMap<char, u128>) -> u128 {
     let mut lowest = u128::MAX;
     let mut highest: u128 = 0;
-    
+
     for (_, appearances) in element_appearances {
         if *appearances < lowest {
             lowest = *appearances;
@@ -15,10 +14,9 @@ fn element_difference(element_appearances: &HashMap<char, u128>) -> u128 {
             highest = *appearances;
         }
     }
-    
+
     highest - lowest
 }
-
 
 fn main() {
     let file = File::open("polymer_template.txt").unwrap();
@@ -45,10 +43,12 @@ fn main() {
     loop {
         match template.next() {
             Some(y) => {
-                *pairs_appearances.entry(format!("{}{}", x, y).to_string()).or_insert(0) += 1;
+                *pairs_appearances
+                    .entry(format!("{}{}", x, y).to_string())
+                    .or_insert(0) += 1;
                 x = y;
                 *element_appearances.entry(x).or_insert(0) += 1;
-            },
+            }
             None => break,
         }
     }

@@ -9,11 +9,15 @@ fn point_from_coordinates(coordinates: &mut std::str::Split<'_, char>) -> (i16, 
     (x, y)
 }
 
-fn part_one(grid: &mut HashSet<(i16, i16)>, folds: &Vec<(char, i16)>, points: &Vec<(i16, i16)>) -> u32 {
+fn part_one(
+    grid: &mut HashSet<(i16, i16)>,
+    folds: &Vec<(char, i16)>,
+    points: &Vec<(i16, i16)>,
+) -> u32 {
     let mut marks = 0;
 
     for point in points {
-        let folded_point ;
+        let folded_point;
 
         if folds[0].0 == 'x' {
             folded_point = (folds[0].1 - (folds[0].1 - point.0).abs(), point.1);
@@ -89,7 +93,7 @@ fn main() {
             push_points = false;
         }
     }
-    
+
     println!("Part One: {}", part_one(&mut folded_grid, &folds, &points));
     part_two(&folded_grid, &folds);
 }
